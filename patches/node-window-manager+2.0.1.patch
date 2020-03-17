@@ -1,5 +1,27 @@
+diff --git a/node_modules/node-window-manager/dist/classes/window.js b/node_modules/node-window-manager/dist/classes/window.js
+index 3ac007e..8e59b2a 100644
+--- a/node_modules/node-window-manager/dist/classes/window.js
++++ b/node_modules/node-window-manager/dist/classes/window.js
+@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const __1 = require("..");
+-const extract_file_icon_1 = __importDefault(require("extract-file-icon"));
+ const monitor_1 = require("./monitor");
+ const empty_monitor_1 = require("./empty-monitor");
+ class Window {
+@@ -140,9 +139,6 @@ class Window {
+             return 1;
+         return __1.addon.getWindowOpacity(this.id);
+     }
+-    getIcon(size = 64) {
+-        return extract_file_icon_1.default(this.path, size);
+-    }
+     setOwner(window) {
+         if (!__1.addon || !__1.addon.setWindowOwner)
+             return;
 diff --git a/node_modules/node-window-manager/lib/windows.cc b/node_modules/node-window-manager/lib/windows.cc
-index 461ab78..162bf8d 100644
+index 965b87c..27d7637 100644
 --- a/node_modules/node-window-manager/lib/windows.cc
 +++ b/node_modules/node-window-manager/lib/windows.cc
 @@ -129,14 +129,17 @@ Napi::Object getWindowBounds (const Napi::CallbackInfo& info) {
@@ -25,3 +47,15 @@ index 461ab78..162bf8d 100644
  
      return bounds;
  }
+diff --git a/node_modules/node-window-manager/package.json b/node_modules/node-window-manager/package.json
+index ccebfe9..ddd5667 100644
+--- a/node_modules/node-window-manager/package.json
++++ b/node_modules/node-window-manager/package.json
+@@ -35,7 +35,6 @@
+     "typescript": "3.7.3"
+   },
+   "dependencies": {
+-    "extract-file-icon": "^0.3.2",
+     "node-addon-api": "2.0.0",
+     "node-gyp": "6.0.1"
+   }
